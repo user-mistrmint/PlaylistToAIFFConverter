@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Major Version</key>
+	<integer>1</integer>
+	<key>Minor Version</key>
+	<integer>1</integer>
+	<key>Date</key>
+	<date>2025-07-31T12:00:00Z</date>
+	<key>Application Version</key>
+	<string>12.13.0.12</string>
+	<key>Features</key>
+	<integer>5</integer>
+	<key>Show Content Ratings</key>
+	<true/>
+	<key>Music Folder</key>
+	<string>file://localhost/Users/username/Music/iTunes/iTunes%20Music/</string>
+	<key>Library Persistent ID</key>
+	<string>A1B2C3D4E5F6G7H8</string>
+	<key>Tracks</key>
+	<dict>
+		<key>1001</key>
+		<dict>
+			<key>Track ID</key>
+			<integer>1001</integer>
+			<key>Name</key>
+			<string>Example Track 1</string>
+			<key>Artist</key>
+			<string>Example Artist</string>
+			<key>Album</key>
+			<string>Example Album</string>
+			<key>Genre</key>
+			<string>Electronic</string>
+			<key>Kind</key>
+			<string>MPEG audio file</string>
+			<key>Size</key>
+			<integer>8421504</integer>
+			<key>Total Time</key>
+			<integer>210000</integer>
+			<key>Track Number</key>
+			<integer>1</integer>
+			<key>Year</key>
+			<integer>2023</integer>
+			<key>Date Modified</key>
+			<date>2023-06-15T10:30:00Z</date>
+			<key>Date Added</key>
+			<date>2023-06-15T10:30:00Z</date>
+			<key>Bit Rate</key>
+			<integer>320</integer>
+			<key>Sample Rate</key>
+			<integer>44100</integer>
+			<key>Location</key>
+			<string>file://localhost/Users/username/Music/iTunes/iTunes%20Music/Example%20Artist/Example%20Album/01%20Example%20Track%201.mp3</string>
+		</dict>
+		<key>1002</key>
+		<dict>
+			<key>Track ID</key>
+			<integer>1002</integer>
+			<key>Name</key>
+			<string>Another Great Song</string>
+			<key>Artist</key>
+			<string>Different Artist</string>
+			<key>Album</key>
+			<string>Another Album</string>
+			<key>Genre</key>
+			<string>House</string>
+			<key>Kind</key>
+			<string>MPEG audio file</string>
+			<key>Size</key>
+			<integer>9876543</integer>
+			<key>Total Time</key>
+			<integer>195000</integer>
+			<key>Track Number</key>
+			<integer>3</integer>
+			<key>Year</key>
+			<integer>2024</integer>
+			<key>Date Modified</key>
+			<date>2024-03-20T14:15:00Z</date>
+			<key>Date Added</key>
+			<date>2024-03-20T14:15:00Z</date>
+			<key>Bit Rate</key>
+			<integer>320</integer>
+			<key>Sample Rate</key>
+			<integer>44100</integer>
+			<key>Location</key>
+			<string>file://localhost/Users/username/Music/iTunes/iTunes%20Music/Different%20Artist/Another%20Album/03%20Another%20Great%20Song.mp3</string>
+		</dict>
+		<key>1003</key>
+		<dict>
+			<key>Track ID</key>
+			<integer>1003</integer>
+			<key>Name</key>
+			<string>Final Track</string>
+			<key>Artist</key>
+			<string>Third Artist</string>
+			<key>Album</key>
+			<string>Final Album</string>
+			<key>Genre</key>
+			<string>Techno</string>
+			<key>Kind</key>
+			<string>MPEG audio file</string>
+			<key>Size</key>
+			<integer>7654321</integer>
+			<key>Total Time</key>
+			<integer>180000</integer>
+			<key>Track Number</key>
+			<integer>7</integer>
+			<key>Year</key>
+			<integer>2024</integer>
+			<key>Date Modified</key>
+			<date>2024-01-10T09:45:00Z</date>
+			<key>Date Added</key>
+			<date>2024-01-10T09:45:00Z</date>
+			<key>Bit Rate</key>
+			<integer>320</integer>
+			<key>Sample Rate</key>
+			<integer>44100</integer>
+			<key>Location</key>
+			<string>file://localhost/Users/username/Music/iTunes/iTunes%20Music/Third%20Artist/Final%20Album/07%20Final%20Track.mp3</string>
+		</dict>
+	</dict>
+	<key>Playlists</key>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>DJ Mix Playlist</string>
+			<key>Playlist ID</key>
+			<integer>2001</integer>
+			<key>Playlist Persistent ID</key>
+			<string>P1L2A3Y4L5I6S7T8</string>
+			<key>All Items</key>
+			<true/>
+			<key>Playlist Items</key>
+			<array>
+				<dict>
+					<key>Track ID</key>
+					<integer>1001</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key>
+					<integer>1002</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key>
+					<integer>1003</integer>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
+

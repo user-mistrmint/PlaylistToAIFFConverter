@@ -1,0 +1,8 @@
+#EXTM3U
+#EXTINF:210,Example Artist - Example Track 1
+/Users/username/Music/iTunes/iTunes Music/Example Artist/Example Album/01 Example Track 1.mp3
+#EXTINF:195,Different Artist - Another Great Song
+/Users/username/Music/iTunes/iTunes Music/Different Artist/Another Album/03 Another Great Song.mp3
+#EXTINF:180,Third Artist - Final Track
+/Users/username/Music/iTunes/iTunes Music/Third Artist/Final Album/07 Final Track.mp3
+

@@ -1,0 +1,136 @@
+{
+  "name": "PlaylistToAIFFConverter",
+  "displayName": "iTunes Playlist to AIFF Converter",
+  "version": "1.0.0",
+  "build": "1",
+  "description": "Convert iTunes playlists to AIFF format for Traktor Pro 4 compatibility",
+  "author": "Playlist to AIFF Converter Team",
+  "copyright": "Copyright © 2025 Playlist to AIFF Converter. All rights reserved.",
+  "website": "https://github.com/your-username/PlaylistToAIFFConverter",
+  "supportEmail": "support@example.com",
+  "category": "Music",
+  "minimumSystemVersion": "12.0",
+  "architectures": ["x86_64", "arm64"],
+  "bundle": {
+    "identifier": "com.yourcompany.PlaylistToAIFFConverter",
+    "executable": "PlaylistToAIFFConverter",
+    "icon": "AppIcon",
+    "documentTypes": [
+      {
+        "name": "iTunes XML Playlist",
+        "extensions": ["xml"],
+        "role": "Viewer",
+        "rank": "Alternate"
+      },
+      {
+        "name": "M3U Playlist",
+        "extensions": ["m3u", "m3u8"],
+        "role": "Viewer",
+        "rank": "Alternate"
+      },
+      {
+        "name": "Text Playlist",
+        "extensions": ["txt"],
+        "role": "Viewer",
+        "rank": "Alternate"
+      }
+    ]
+  },
+  "signing": {
+    "identity": "",
+    "team": "",
+    "entitlements": "PlaylistToAIFFConverter/PlaylistToAIFFConverter.entitlements",
+    "hardenedRuntime": true,
+    "notarization": false
+  },
+  "distribution": {
+    "methods": ["direct", "dmg", "zip"],
+    "dmg": {
+      "volumeName": "Playlist to AIFF Converter",
+      "background": null,
+      "iconSize": 80,
+      "windowSize": {
+        "width": 600,
+        "height": 400
+      },
+      "iconPositions": {
+        "PlaylistToAIFFConverter.app": [150, 200],
+        "Applications": [450, 200]
+      }
+    },
+    "zip": {
+      "name": "PlaylistToAIFFConverter-v1.0.zip",
+      "compression": "standard"
+    }
+  },
+  "requirements": {
+    "system": {
+      "minimumVersion": "12.0",
+      "architecture": ["x86_64", "arm64"],
+      "memory": "4GB",
+      "storage": "1GB"
+    },
+    "dependencies": [
+      {
+        "name": "AVFoundation",
+        "type": "framework",
+        "version": "12.0+"
+      },
+      {
+        "name": "SwiftUI",
+        "type": "framework",
+        "version": "12.0+"
+      },
+      {
+        "name": "Combine",
+        "type": "framework",
+        "version": "12.0+"
+      }
+    ]
+  },
+  "features": [
+    "Multiple playlist format support (XML, M3U, M3U8, TXT)",
+    "Intelligent file location with learning capabilities",
+    "High-quality AIFF conversion optimized for Traktor Pro 4",
+    "Batch processing with real-time progress tracking",
+    "Native macOS interface with drag-and-drop support",
+    "Comprehensive error handling and recovery",
+    "Metadata preservation during conversion",
+    "Configurable quality settings and output options"
+  ],
+  "changelog": {
+    "1.0.0": [
+      "Initial release",
+      "Support for iTunes XML, M3U, M3U8, and text playlists",
+      "AIFF conversion with Traktor Pro 4 optimization",
+      "Intelligent file location system",
+      "Native SwiftUI interface",
+      "Batch processing capabilities",
+      "Comprehensive documentation and user manual"
+    ]
+  },
+  "build": {
+    "configuration": "Release",
+    "scheme": "PlaylistToAIFFConverter",
+    "destination": "generic/platform=macOS",
+    "archivePath": "build/PlaylistToAIFFConverter.xcarchive",
+    "exportPath": "build/Export",
+    "codeSigningRequired": false,
+    "stripSwiftSymbols": true
+  },
+  "testing": {
+    "unitTests": true,
+    "integrationTests": false,
+    "uiTests": false,
+    "performanceTests": false,
+    "testScheme": "PlaylistToAIFFConverterTests"
+  },
+  "documentation": {
+    "readme": "README.md",
+    "userManual": "USER_MANUAL.md",
+    "technicalDocs": "TECHNICAL_DOCUMENTATION.md",
+    "installationGuide": "INSTALLATION_GUIDE.md",
+    "changelog": "CHANGELOG.md"
+  }
+}
+

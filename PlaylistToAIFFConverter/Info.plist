@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Playlist to AIFF Converter</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.music</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>12.0</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2025 Playlist to AIFF Converter. All rights reserved.</string>
+	<key>NSMainStoryboardFile</key>
+	<string>Main</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSSupportsAutomaticTermination</key>
+	<true/>
+	<key>NSSupportsSuddenTermination</key>
+	<true/>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>xml</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>PlaylistIcon</string>
+			<key>CFBundleTypeName</key>
+			<string>iTunes XML Playlist</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.itunes.library-xml</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>m3u</string>
+				<string>m3u8</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>PlaylistIcon</string>
+			<key>CFBundleTypeName</key>
+			<string>M3U Playlist</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.m3u-playlist</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>txt</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>PlaylistIcon</string>
+			<key>CFBundleTypeName</key>
+			<string>Text Playlist</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>This app needs access to your Desktop folder to locate playlist and music files.</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>This app needs access to your Documents folder to locate playlist and music files.</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>This app needs access to your Downloads folder to locate playlist and music files.</string>
+	<key>NSMusicFolderUsageDescription</key>
+	<string>This app needs access to your Music folder to locate and convert audio files.</string>
+	<key>NSRemovableVolumesUsageDescription</key>
+	<string>This app needs access to removable volumes to locate music files that may be stored on external drives.</string>
+</dict>
+</plist>
+
