@@ -1,5 +1,4 @@
 import Foundation
-import PlaylistParser
 
 // MARK: - File Location Result
 
