@@ -10,13 +10,11 @@ on:
 
 env:
   PROJECT_NAME: PlaylistToAIFFConverter
-  SCHEME_NAME: PlaylistToAIFFConverter
-  CONFIGURATION: Release
 
 jobs:
   build:
     name: Build macOS Application
-    runs-on: macos-14  # Changed from macos-latest to specific version
+    runs-on: macos-14
     
     steps:
     - name: Checkout Repository
@@ -27,54 +25,121 @@ jobs:
       with:
         xcode-version: latest-stable
         
-    - name: Cache Build Dependencies
-      uses: actions/cache@v4  # Updated from v3 to v4
-      with:
-        path: |
-          ~/Library/Developer/Xcode/DerivedData
-          ~/.swiftpm
-        key: ${{ runner.os }}-xcode-${{ hashFiles('**/*.xcodeproj', '**/Package.swift') }}
-        restore-keys: |
-          ${{ runner.os }}-xcode-
-          
-    - name: Build Application
+    - name: Check Project Structure
       run: |
-        echo "Building $PROJECT_NAME..."
-        chmod +x build.sh
-        ./build.sh --clean
+        echo "=== Repository Contents ==="
+        ls -la
+        echo ""
+        echo "=== Package.swift Contents ==="
+        cat Package.swift
+        echo ""
+        echo "=== Sources Directory ==="
+        find Sources -type f -name "*.swift" | head -10
+        
+    - name: Build with Swift Package Manager
+      run: |
+        echo "Building with Swift Package Manager..."
+        swift build -c release --verbose
         
     - name: Run Tests
       run: |
-        echo "Running tests..."
-        xcodebuild test \
-          -project "$PROJECT_NAME.xcodeproj" \
-          -scheme "$SCHEME_NAME" \
-          -destination "platform=macOS" \
-          || echo "Tests completed with warnings"
-          
-    - name: Create DMG
-      if: startsWith(github.ref, 'refs/tags/')
+        echo "Running Swift package tests..."
+        swift test || echo "Tests completed with warnings"
+        
+    - name: Create Application Bundle
+      run: |
+        echo "Creating macOS application bundle..."
+        
+        # Create build directory
+        mkdir -p build/Export
+        
+        # Create app bundle structure
+        APP_BUNDLE="build/Export/$PROJECT_NAME.app"
+        mkdir -p "$APP_BUNDLE/Contents/MacOS"
+        mkdir -p "$APP_BUNDLE/Contents/Resources"
+        
+        # Copy the executable
+        if [ -f ".build/release/$PROJECT_NAME" ]; then
+          cp ".build/release/$PROJECT_NAME" "$APP_BUNDLE/Contents/MacOS/"
+          chmod +x "$APP_BUNDLE/Contents/MacOS/$PROJECT_NAME"
+          echo "✅ Executable copied successfully"
+        else
+          echo "❌ Executable not found at .build/release/$PROJECT_NAME"
+          echo "Available files in .build/release/:"
+          ls -la .build/release/ || echo "No release directory found"
+          exit 1
+        fi
+        
+        # Create Info.plist
+        cat > "$APP_BUNDLE/Contents/Info.plist" << EOF
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+            <key>CFBundleExecutable</key>
+            <string>$PROJECT_NAME</string>
+            <key>CFBundleIdentifier</key>
+            <string>com.example.playlisttoaiffconverter</string>
+            <key>CFBundleName</key>
+            <string>Playlist to AIFF Converter</string>
+            <key>CFBundleDisplayName</key>
+            <string>Playlist to AIFF Converter</string>
+            <key>CFBundleVersion</key>
+            <string>1.0</string>
+            <key>CFBundleShortVersionString</key>
+            <string>1.0.0</string>
+            <key>CFBundlePackageType</key>
+            <string>APPL</string>
+            <key>LSMinimumSystemVersion</key>
+            <string>12.0</string>
+            <key>NSHighResolutionCapable</key>
+            <true/>
+        </dict>
+        </plist>
+        EOF
+        
+        echo "✅ App bundle created successfully"
+        echo "Bundle contents:"
+        find "$APP_BUNDLE" -type f
+        
+    - name: Create DMG Installer
+      if: startsWith(github.ref, 'refs/tags/' )
       run: |
         echo "Creating DMG installer..."
-        ./build.sh --dmg
+        
+        APP_BUNDLE="build/Export/$PROJECT_NAME.app"
+        VERSION_TAG="${{ github.ref_name }}"
+        DMG_NAME="build/$PROJECT_NAME-$VERSION_TAG.dmg"
+        
+        # Ensure build directory exists
+        mkdir -p build
+        
+        # Create DMG
+        hdiutil create -volname "Playlist to AIFF Converter" \
+          -srcfolder "$APP_BUNDLE" \
+          -ov -format UDZO \
+          "$DMG_NAME"
+          
+        echo "✅ DMG created: $DMG_NAME"
+        ls -la build/*.dmg
         
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v4  # Updated from v3 to v4
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.PROJECT_NAME }}-${{ github.sha }}
         path: |
           build/Export/${{ env.PROJECT_NAME }}.app
-          build/${{ env.PROJECT_NAME }}-v*.dmg
+          build/${{ env.PROJECT_NAME }}-*.dmg
         retention-days: 30
+        if-no-files-found: warn
         
     - name: Create GitHub Release
       if: startsWith(github.ref, 'refs/tags/')
-      uses: softprops/action-gh-release@v2  # Updated to latest version
+      uses: softprops/action-gh-release@v2
       with:
         name: iTunes Playlist to AIFF Converter ${{ github.ref_name }}
         files: |
-          build/Export/${{ env.PROJECT_NAME }}.app
-          build/${{ env.PROJECT_NAME }}-v*.dmg
+          build/${{ env.PROJECT_NAME }}-*.dmg
         draft: false
         prerelease: ${{ contains(github.ref_name, 'beta') || contains(github.ref_name, 'alpha') || contains(github.ref_name, 'rc') }}
         generate_release_notes: true
