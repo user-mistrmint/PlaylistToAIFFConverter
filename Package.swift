@@ -13,33 +13,18 @@ let package = Package(
         ),
     ],
     dependencies: [
-        // Add external dependencies here if needed
+        // Add any external dependencies here if needed
     ],
     targets: [
         .executableTarget(
             name: "PlaylistToAIFFConverter",
-            dependencies: [
-                "PlaylistParser",
-                "AudioConverter",
-                "FileLocator"
-            ]
-        ),
-        .target(
-            name: "PlaylistParser",
-            dependencies: []
-        ),
-        .target(
-            name: "AudioConverter",
-            dependencies: []
-        ),
-        .target(
-            name: "FileLocator",
-            dependencies: []
+            dependencies: [],
+            path: "Sources"
         ),
         .testTarget(
             name: "PlaylistToAIFFConverterTests",
-            dependencies: ["PlaylistToAIFFConverter"]
+            dependencies: ["PlaylistToAIFFConverter"],
+            path: "Tests"
         ),
     ]
 )
-
